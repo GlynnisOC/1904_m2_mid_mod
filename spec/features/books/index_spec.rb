@@ -17,21 +17,26 @@ RSpec.describe "Book Index page" do
 
       visit books_path
 
-      expect(page).to have_content(@flight_attendant.title)
-      expect(page).to have_content(@wife_between_us.title)
-      expect(page).to have_content(@woman_in_cabin_ten.title)
+      within "#id-#{@flight_attendant.id}" do
+        expect(page).to have_content(@flight_attendant.title)
+        expect(page).to have_content(@flight_attendant.page_count)
+        expect(page).to have_content(@flight_attendant.year_published)
+        expect(page).to have_content(@flight_attendant.authors.name)
+      end
 
-      expect(page).to have_content(@flight_attendant.page_count)
-      expect(page).to have_content(@wife_between_us.page_count)
-      expect(page).to have_content(@woman_in_cabin_ten.page_count)
+      within "#id-#{@wife_between_us.id}" do
+        expect(page).to have_content(@wife_between_us.title)
+        expect(page).to have_content(@wife_between_us.page_count)
+        expect(page).to have_content(@wife_between_us.year_published)
+        expect(page).to have_content(@wife_between_us.authors.name)
+      end
 
-      expect(page).to have_content(@flight_attendant.year_published)
-      expect(page).to have_content(@wife_between_us.year_published)
-      expect(page).to have_content(@woman_in_cabin_ten.year_published)
-
-      expect(page).to have_content(@flight_attendant.authors.name)
-      expect(page).to have_content(@wife_between_us.authors.name)
-      expect(page).to have_content(@woman_in_cabin_ten.authors.name)
+      within "#id-#{@woman_in_cabin_ten.id}" do
+        expect(page).to have_content(@woman_in_cabin_ten.title)
+        expect(page).to have_content(@woman_in_cabin_ten.page_count)
+        expect(page).to have_content(@woman_in_cabin_ten.year_published)
+        expect(page).to have_content(@woman_in_cabin_ten.authors.name)
+      end
     end
   end
 end
