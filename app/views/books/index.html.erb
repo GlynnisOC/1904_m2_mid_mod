@@ -6,6 +6,6 @@
 <h5>Pages: <%= book.page_count %></h5>
 <h5>Date Published: <%= book.year_published %></h5>
 <h5>Authors: <% book.authors.each do |author| %>
-  <%= author.name %>
+  <%= link_to author.name, author_path(author) %>
   <% end %>
 <% end %>
